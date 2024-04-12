@@ -11,8 +11,6 @@ export default class Reel {
 
     this.animation = this.symbolContainer.animate(
       [
-        // We cannot animate translateY & filter at the same time in safari for some reasons,
-        // so we go with animating top & filter instead.
         { top: 0, filter: "blur(0)" },
         { filter: "blur(2px)", offset: 0.5 },
         {
@@ -33,6 +31,17 @@ export default class Reel {
     initialSymbols.forEach((symbol) =>
       this.symbolContainer.appendChild(new Symbol(symbol).img)
     );
+
+    // Add event listener to reel container
+    reelContainer.addEventListener("click", () => {
+      // Check if animation is running
+      if (this.animation.playState === "running") {
+        // If animation is running, cancel it
+        this.animation.cancel();
+        // Finish the animation manually
+        this.animation.finish();
+      }
+    });
   }
 
   get factor() {
@@ -74,5 +83,12 @@ export default class Reel {
         this.symbolContainer.firstChild.remove();
       }
     });
+  }
+
+  highlightSymbol(index) {
+    // Get the symbol element at the specified index
+    const symbolToHighlight = this.symbolContainer.children[index];
+    // Add the "win-symbol" class to the symbol element
+    symbolToHighlight.classList.add("win-symbol");
   }
 }

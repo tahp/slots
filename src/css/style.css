@@ -74,10 +74,38 @@ input[type="checkbox"] {
   text-align: center;
 }
 
+#points {
+  color: #d5ad6d;
+  font-size: 40px;
+  text-align: center;
+}
+
 #slot.inverted .reel {
   transform: scaleY(-1);
 }
 
 #slot.inverted .reel > .icons > img {
   transform: scaleY(-1);
+}
+
+.background-image {
+  background-image: url("../assets/bg_small2.jpg"); /* Replace 'background-image.jpg' with the path to your background image */
+  background-size: cover; /* Scale the background image to cover the entire container */
+  background-position: center; /* Center the background image */
+}
+
+.reel {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.5
+  ); /* Set the background color to translucent white */
+  /* You can adjust the last value (0.5) to control the level of transparency */
+  border: 1px solid blue;
+}
+.win-symbol {
+  border: 2px solid gold; /* Example border style */
+  box-shadow: 0 0 5px gold; /* Example shadow effect */
+  /* Add any other styles for highlighting */
 }
